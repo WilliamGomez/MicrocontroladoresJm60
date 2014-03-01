@@ -1,0 +1,41 @@
+//Variables
+
+unsigned char contador=0;
+unsigned int time=0;
+
+//Rutinas
+
+void retardo (){
+	for (time=0; time<10000; time++){
+	}
+}
+
+//Programa Principal
+
+void main (void) {
+	//Off Guardian Dog
+	SOPT1=0X20;
+	
+	// Abre Puertos
+	PTBDD=0XFF
+	
+	//Llama Variable
+	contador=0;
+	
+	//Inicia
+	for (;;){
+	
+		//Dirige Trafico a Puerto B
+		PTBD=contador;
+	
+		//Retardo
+		retardo();
+		
+		//Cuestiones o Razones a Ejecutar
+		contador++;
+		if contador >9){
+			contador=0;
+			}
+		}
+	}
+}	
