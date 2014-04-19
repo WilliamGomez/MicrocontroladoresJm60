@@ -21,24 +21,24 @@ void retardo () {
 }
 
 void mostrar () {
-	
+
 	//Para Display Anodo
 	PTBED=tabla_A[Um];
-	PTBD_PTBD0=1;
-	retardo();
 	PTBD_PTBD0=0;
+	retardo();
+	PTBD_PTBD0=1;
 	PTBED=tabla_A[Dm];
-	PTBD_PTBD1=1;
-	retardo();
 	PTBD_PTBD1=0;
+	retardo();
+	PTBD_PTBD1=1;
 	PTED=tabla_A[Uh];
-	PTBD_PTBD2=1;
-	retardo();
 	PTBD_PTBD2=0;
-	PTED=tabla_A[Dh];
-	PTBD_PTBD3=1;
 	retardo();
+	PTBD_PTBD2=1;
+	PTED=tabla_A[Dh];
 	PTBD_PTBD3=0;
+	retardo();
+	PTBD_PTBD3=1;
 
 	//Para Display Katodo
 	/*
@@ -75,7 +75,7 @@ void main (void) {
 	Dh=1;
 
 	//Inicia las Sentencias
-	
+
 	for(;;){
 		mostrar();
 		Us=++;
