@@ -73,7 +73,7 @@ void Aumentar_MIN () {
 	Um=++;
 	if (Um>9){
 		Um=0;
-		Dm=++;
+		Dm++;
 	}
 	if (Dm>5) {
 		Dm=0;
@@ -92,7 +92,7 @@ void Aumentar_HOR () {
 	}
 	else (Uh>9){
 		Uh=0;
-		Dh=++;
+		Dh++;
 	}
 }
 
@@ -116,7 +116,7 @@ void main (void) {
 		void Aumentar_MIN (){
 		}
 	}
-	if (PTGD_PTGD2=0) {
+	if (PTGD_PTGD2==0) {
 		void Aumentar_HOR (){
 		}
 	}
@@ -127,19 +127,19 @@ void main (void) {
 		Us=++;
 		if (Us>9){
 			Us=0;
-			Ds=++;
+			Ds++;
 		}
 		if (Ds>5){
 			Ds=0;
-			Um=++;
+			Um++;
 		}
 		if (Um>9){
 			Um=0;
-			Dm=++;
+			Dm++;
 		}
 		if (Dm>5){
 			Dm=0;
-			Uh=++;
+			Uh++;
 		}
 		if (Dh>0){
 			if (Uh>2){
@@ -149,7 +149,7 @@ void main (void) {
 		} 
 		else (Uh>9){
 			Uh=0;
-			Dh=++;
+			Dh++;
 		} 
 	} // For
 } // Main
