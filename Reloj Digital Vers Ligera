@@ -1,0 +1,109 @@
+// Reloj Digital Microcontrolador JM60 Vers Ligera Anodo
+
+//Variables
+unsigned char Us=0,Dh=1,Ds=0,Um=0,Um=0,Dm=0,Uh=2;
+unsigned long time=0;
+unsigned char tabla_A[10]={0XC0,0XF9,0XA4,0XB0,0X99,0X92,0X82,0XD8,0X80,0X90};
+
+//Rutinas
+void retardo () {
+	for (time=0;time<100;time++){
+	}
+}
+void retardo2 (){
+	for (time=0;time<10000;time++){
+	}
+}
+void mostrar () {
+	PTBED=tabla_A[Um];
+	PTBD_PTBD0=1;
+	retardo();
+	PTBD_PTBD0=0;
+	PTBED=tabla_A[Dm];
+	PTBD_PTBD1=1;
+	retardo();
+	PTBD_PTBD1=0;
+	PTED=tabla_A[Uh];
+	PTBD_PTBD2=1;
+	retardo();
+	PTBD_PTBD2=0;
+	PTED=tabla_A[Dh];
+	PTBD_PTBD3=1;
+	retardo();
+	PTBD_PTBD3=0;
+}
+void Aumentar_MIN () {
+	retardo2();
+	Um++;
+	if (Um>9){
+		Um=0;
+		Dm++;
+	}
+	if (Dm>5) {
+		Dm=0;
+	}
+}
+void Aumentar_HOR () {
+	retardo2();
+	Uh++
+	if (Dh>0){
+		if (Uh>2){
+			Uh=1;
+			Dh=0;
+		}
+	}
+	else (Uh>9){
+		Uh=0;
+		Dh++;
+	}
+}
+void main (void) {
+	SOPT1=0X20;
+	PTEDD=0XFF;
+	PTBDD=0XFF;
+	PTGPE=0XFF;
+	Us=0;
+	Ds=0;
+	Um=0;
+	Dm=0;
+	Uh=2;
+	Dh=1;
+	if (PTGD_PTGD1==0) {
+		void Aumentar_MIN (){
+		}
+	}
+	if (PTGD_PTGD2==0) {
+		void Aumentar_HOR (){
+		}
+	}
+	for(;;){
+		mostrar();
+		Us=++;
+		if (Us>9){
+			Us=0;
+			Ds++;
+		}
+		if (Ds>5){
+			Ds=0;
+			Um++;
+		}
+		if (Um>9){
+			Um=0;
+			Dm++;
+		}
+		if (Dm>5){
+			Dm=0;
+			Uh++;
+		}
+		if (Dh>0){
+			if (Uh>2){
+				Uh=1;
+				Dh=0;
+				}
+		} 
+		else (Uh>9){
+			Uh=0;
+			Dh++;
+		} 
+	}
+}
