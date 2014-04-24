@@ -83,7 +83,7 @@ void Aumentar_MIN () {
 //Aumentar_HOR
 void Aumentar_HOR () {
 	retardo2();
-	Uh=++
+	Uh++
 	if (Dh>0){
 		if (Uh>2){
 			Uh=1;
@@ -124,7 +124,7 @@ void main (void) {
 	//Inicia las Sentencias
 	for(;;){
 		mostrar();
-		Us=++;
+		Us++;
 		if (Us>9){
 			Us=0;
 			Ds++;
