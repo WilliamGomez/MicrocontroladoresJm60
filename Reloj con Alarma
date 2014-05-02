@@ -83,13 +83,28 @@ void Comparar_Alarma () {
 
 //Rutina Mostrar Alarma
 void Mostrar_Alarma () {
-
+	PTBED=tabla_A[Uma];
+	PTBD_PTBD0=1;
+	retardo();
+	PTBD_PTBD0=0;
+	PTBED=tabla_A[Dma];
+	PTBD_PTBD1=1;
+	retardo();
+	PTBD_PTBD1=0;
+	PTED=tabla_A[Uha];
+	PTBD_PTBD2=1;
+	retardo();
+	PTBD_PTBD2=0;
+	PTED=tabla_A[Dha];
+	PTBD_PTBD3=1;
+	retardo();
+	PTBD_PTBD3=0;
 }
 
 //Rutina Aumentar_MIN
 void Aumentar_MIN () {
 	retardo2();
-	Um=++;
+	Um++;
 	if (Um>9){
 		Um=0;
 		Dm++;
@@ -119,7 +134,7 @@ void Aumentar_HOR () {
 
 void main (void) {
 	SOPT1=0X20; //Deshabilita Perro Guardian
-	PTEDD=0XFF;
+	PTDDD=0XFF;
 	PTBDD=0XFF;
 	PTGPE=0XFF; //Se Habilita el Puerto G y se Configura con el PE (Pull Up Enable)
 	PTCPE=0XFF; //Se Habilita el Puerto C y se Configura con el PE (Pull Up Enable)
