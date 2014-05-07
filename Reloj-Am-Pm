@@ -1,0 +1,200 @@
+// Reloj Digital Microcontrolador JM60
+
+//Variables
+unsigned char Us=0; //Unidades de Segundo
+unsigned char Ds=0; //Decenas de Segundo
+unsigned char Um=0; //Unidades de Minuto
+unsigned char Dm=0; //Decenas de Minuto
+unsigned char Uh=2; //Unidades de Hora
+unsigned char Dh=1; //Decenas de Hora
+unsigned char Uma=0; //Unidades de Minuto en Alarma
+unsigned char Dma=0; //Decenas de Minuto en Alarma
+unsigned char Uha=1; //Unidades de Hora en Alarma
+unsigned char Dha=2; //Decenas de Hora en Alarma
+unsigned char Am=0; //Ante Meridem
+unsigned char Pm=0; //Post Meridem
+unsigned long time=0; //Variable para Retardo
+unsigned char tabla_K[10]={0X3F,0X06,0X5B,0X4F,0X66,0X6D,0X7D,0X27,0X7F,0X6F}; //Conf Display Katodo
+unsigned char tabla_A[10]={0XC0,0XF9,0XA4,0XB0,0X99,0X92,0X82,0XD8,0X80,0X90}; //Conf Display Anodo
+
+//Rutinas
+
+//Rutina Retardo 1
+void retardo () {
+	for (time=0;time<100;time++){
+	}
+}
+
+// Rutina Retardo 2
+void retardo2 (){
+	for (time=0;time<10000;time++){
+	}
+}
+
+// Rutina Mostrar Display
+void mostrar () {
+
+	//Para Display Anodo
+	PTBED=tabla_A[Um];
+	PTBD_PTBD0=1;
+	retardo();
+	PTBD_PTBD0=0;
+	PTBED=tabla_A[Dm];
+	PTBD_PTBD1=1;
+	retardo();
+	PTBD_PTBD1=0;
+	PTED=tabla_A[Uh];
+	PTBD_PTBD2=1;
+	retardo();
+	PTBD_PTBD2=0;
+	PTED=tabla_A[Dh];
+	PTBD_PTBD3=1;
+	retardo();
+	PTBD_PTBD3=0;
+
+	//Para Display Katodo
+	/*
+	PTBED=tabla_K[Um];
+	PTBD_PTBD0=0;
+	retardo();
+	PTBD_PTBD0=1;
+	PTBED=tabla_K[Dm];
+	PTBD_PTBD1=0;
+	retardo();
+	PTBD_PTBD1=1;
+	PTED=tabla_K[Uh];
+	PTBD_PTBD2=0;
+	retardo();
+	PTBD_PTBD2=1;
+	PTED=tabla_K[Dh];
+	PTBD_PTBD3=0;
+	retardo();
+	PTBD_PTBD3=1;
+	*/
+}
+
+//Rutina Comparar Alarma
+void Comparar_Alarma () {
+	if (Um=Uma,Dm=Dma,Uh=Uha,Dh=Dha) {
+		PTCD_PTCD0=1;
+	}
+	else () {
+		PTCD_PTCD0=0;
+	}
+}
+
+//Rutina Mostrar Alarma
+void Mostrar_Alarma () {
+
+}
+
+//Rutina Aumentar_MIN
+void Aumentar_MIN () {
+	retardo2();
+	Um=++;
+	if (Um>9){
+		Um=0;
+		Dm++;
+	}
+	if (Dm>5) {
+		Dm=0;
+	}
+}
+
+//Rutina Aumentar_HOR
+void Aumentar_HOR () {
+	retardo2();
+	Uh++
+	if (Dh>0){
+		if (Uh>2){
+			Uh=1;
+			Dh=0;
+		}
+	}
+	else (Uh>9){
+		Uh=0;
+		Dh++;
+	}
+}
+
+//Programa Principal
+
+void main (void) {
+	SOPT1=0X20; //Deshabilita Perro Guardian
+	PTEDD=0XFF;
+	PTBDD=0XFF;
+	PTGPE=0XFF; //Se Habilita el Puerto G y se Configura con el PE (Pull Up Enable)
+	PTCPE=0XFF; //Se Habilita el Puerto C y se Configura con el PE (Pull Up Enable)
+	
+	//Retoma de Variables
+	Us=0; 
+	Ds=0; 
+	Um=0; 
+	Dm=0; 
+	Uh=2; 
+	Dh=1; 
+	Uma=0;
+	Dma=0;
+	Uha=1;
+	Dha=2;
+	Am=0; 
+	Pm=0;
+
+	//Aumentar
+	if (PTGD_PTGD1==0) {
+		void Aumentar_MIN (){
+		}
+	}
+	if (PTGD_PTGD2==0) {
+		void Aumentar_HOR (){
+		}
+	}
+
+	//Alarma
+	if (PTGD_PTGD3=0) {
+		void  Mostrar_Alarma () {			
+		}
+	}
+ 
+	//Inicia las Sentencias
+	for(;;){
+		mostrar();
+		Us++;
+		if (Us>9){
+			Us=0;
+			Ds++;
+		}
+		if (Ds>5){
+			Ds=0;
+			Um++;
+		}
+		if (Um>9){
+			Um=0;
+			Dm++;
+		}
+		if (Dm>5){
+			Dm=0;
+			Uh++;
+		}
+		if (Dh>0){
+			if (Uh=2){
+				if(Uh>2){
+					Uh=1;
+					Dm=0;
+				}
+				}
+				if (Am=0;Pm=0;){
+					Am=1;
+					Pm=1;
+				}
+				else (){
+					Am=0;
+					Pm=0;
+				}
+		} 
+		else (Uh>9){
+			Uh=0;
+			Dh++;
+		} 
+	} // For
+} // Main
