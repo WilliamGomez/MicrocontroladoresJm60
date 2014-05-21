@@ -86,6 +86,25 @@ void Comparar_Alarma () {
 //Rutina Mostrar Alarma
 void Mostrar_Alarma () {
 
+	//Para Display Anodo
+	PTBED=tabla_A[Uma];
+	PTBD_PTBD0=1;
+	retardo();
+	PTBD_PTBD0=0;
+	PTBED=tabla_A[Dma];
+	PTBD_PTBD1=1;
+	retardo();
+	PTBD_PTBD1=0;
+	PTED=tabla_A[Uha];
+	PTBD_PTBD2=1;
+	retardo();
+	PTBD_PTBD2=0;
+	PTED=tabla_A[Dha];
+	PTBD_PTBD3=1;
+	retardo();
+	PTBD_PTBD3=0;
+
+
 }
 
 //Rutina Aumentar_MIN
@@ -117,6 +136,36 @@ void Aumentar_HOR () {
 	}
 }
 
+//Rutina Aumentar_HOR Alarma
+void Aumentar_HOR_Alarma (){
+	retardo2();
+	if (Dha>0{
+		if (Uha>2){
+			Uha=1;
+			Dha=0;
+		}
+	}
+	else (Uha>9){
+		Uh=0;
+		Dha++;
+	}
+
+} 
+
+//Rutina Aumentar_MIN Alarma
+void Aumentar_MIN_Alarma () {
+	retardo2();
+	Uma=++;
+	if (Uma>9){
+		Uma=0;
+		Dma++;
+	}
+	if (Dma>5) {
+		Dma=0;
+	}
+}
+
+
 //Programa Principal
 
 void main (void) {
@@ -139,26 +188,28 @@ void main (void) {
 	Dha=2;
 	Am=0; 
 	Pm=0;
-
-	//Aumentar
-	if (PTGD_PTGD1==0) {
-		void Aumentar_MIN (){
-		}
-	}
-	if (PTGD_PTGD2==0) {
-		void Aumentar_HOR (){
-		}
-	}
-
-	//Alarma
-	if (PTGD_PTGD3=0) {
-		void  Mostrar_Alarma () {			
-		}
-	}
  
 	//Inicia las Sentencias
 	for(;;){
-		mostrar();
+
+		if(PTGD_PTGD3==0){
+		Mostrar_Alarma();
+		if (PTGD_PTGD1==0) {
+		Aumentar_MIN_Alarma ()
+		}
+		if (PTGD_PTGD2==0) {
+		Aumentar_HOR_Alarma ()
+		}
+	}
+	else{
+		Mostrar();
+		if (PTGD_PTGD1==0) {
+		Aumentar_MIN ()
+	}
+	if (PTGD_PTGD2==0) {
+		Aumentar_HOR ()
+	}
+
 		Us++;
 		if (Us>9){
 			Us=0;
